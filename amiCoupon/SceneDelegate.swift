@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  amiCoupon
 //
-//  Created by 杉浦由季 on 2019/10/23.
+//  Created by うらー on 2019/10/23.
 //  Copyright © 2019 startup. All rights reserved.
 //
 
