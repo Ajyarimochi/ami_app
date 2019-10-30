@@ -27,15 +27,20 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        let url: URL = URL(string: "http://127.0.0.1:8000/coupon/?coupon_code=0001")!
+        let url: URL = URL(string: "http://127.0.0.1:8000/coupon/")!
         let task: URLSessionTask = URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) in
             do  {
-                let couponData = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! [String: Any]
-                print(couponData)
-                                
+                let couponDataArray = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! [Any]
+                let couponData = couponDataArray.map { (couponData) -> [String: Any] in
+                    return couponData as! [String: Any]
+                }
+                print(couponData[0]["coupon_benefits"] as! String)
+                print(couponData[1]["coupon_benefits"] as! String)
+
+                
                 DispatchQueue.main.async() { () -> Void in
-                    self.couponBenefit = couponData["coupon_benefits"] as! String
-                    self.couponDeadline = couponData["coupon_deadline"] as! String
+//                    self.couponBenefit = couponData["coupon_benefits"] as! String
+//                    self.couponDeadline = couponData["coupon_deadline"] as! String
                     }
                 }
             catch {
@@ -49,7 +54,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //セルを作る
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "couponCell")
