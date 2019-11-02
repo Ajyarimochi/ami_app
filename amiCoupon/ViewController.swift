@@ -45,13 +45,34 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //セルを作る
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "couponCell")
+        
         let coupon = self.coupons[indexPath.row]
-        //テキストにクーポン特典を設定
-        cell.textLabel?.text = (coupon["coupon_benefits"] as! String)
-         //サブテキストにクーポンの有効期限を設定
-        cell.detailTextLabel?.text = "有効期限：" + (coupon["coupon_deadline"] as! String)
+        //セルを作る
+        let cell = tableView.dequeueReusableCell(withIdentifier: "couponCell", for: indexPath as IndexPath)
+        
+        tableView.rowHeight = 200
+        
+         //各ラベルに値を設定する
+        let labelBenefit = cell.viewWithTag(1) as! UILabel
+        labelBenefit.text = (coupon["coupon_benefits"] as! String)
+
+        let labelExplanation = cell.viewWithTag(2) as! UILabel
+        labelExplanation.text = (coupon["coupon_explanation"] as! String)
+
+        let labelStore = cell.viewWithTag(3) as! UILabel
+        labelStore.text = (coupon["coupon_store"] as! String)
+
+        let labelDay = cell.viewWithTag(4) as! UILabel
+        labelDay.text = "有効期間： " + (coupon["coupon_start"] as! String) + " 〜 " + (coupon["coupon_deadline"] as! String)
+        
+        
+//                //セルを作る
+//        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "couponCell")
+//        let coupon = self.coupons[indexPath.row]
+//        //テキストにクーポン特典を設定
+//        cell.textLabel?.text = (coupon["coupon_benefits"] as! String)
+//         //サブテキストにクーポンの有効期限を設定
+//        cell.detailTextLabel?.text = "有効期限：" + (coupon["coupon_deadline"] as! String)
 
         return cell
     }
