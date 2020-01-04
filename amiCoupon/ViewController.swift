@@ -20,7 +20,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let url: URL = URL(string: "http://127.0.0.1:8000/coupon/")!
+        let url: URL = URL(string: "http://127.0.0.1:8000/api/coupons/")!
         let task: URLSessionTask = URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) in
             do  {
                 let couponDataArray = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! [Any]
@@ -50,30 +50,28 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         //セルを作る
         let cell = tableView.dequeueReusableCell(withIdentifier: "couponCell", for: indexPath as IndexPath)
         
-        tableView.rowHeight = 200
+        tableView.rowHeight = 400
         
          //各ラベルに値を設定する
         let labelBenefit = cell.viewWithTag(1) as! UILabel
-        labelBenefit.text = (coupon["coupon_benefits"] as! String)
+        labelBenefit.text = (coupon["benefit"] as! String)
 
         let labelExplanation = cell.viewWithTag(2) as! UILabel
-        labelExplanation.text = (coupon["coupon_explanation"] as! String)
+        labelExplanation.text = (coupon["explanation"] as! String)
 
         let labelStore = cell.viewWithTag(3) as! UILabel
-        labelStore.text = (coupon["coupon_store"] as! String)
+        labelStore.text = (coupon["store"] as! String)
 
         let labelDay = cell.viewWithTag(4) as! UILabel
-        labelDay.text = "有効期間： " + (coupon["coupon_start"] as! String) + " 〜 " + (coupon["coupon_deadline"] as! String)
+        labelDay.text = "有効期間： " + (coupon["start"] as! String) + " 〜 " + (coupon["deadline"] as! String)
         
-        
-//                //セルを作る
-//        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "couponCell")
-//        let coupon = self.coupons[indexPath.row]
-//        //テキストにクーポン特典を設定
-//        cell.textLabel?.text = (coupon["coupon_benefits"] as! String)
-//         //サブテキストにクーポンの有効期限を設定
-//        cell.detailTextLabel?.text = "有効期限：" + (coupon["coupon_deadline"] as! String)
-
+        // クーポン画像を表示
+        let couponImageView = cell.viewWithTag(5) as! UIImageView
+        if let urlString = coupon["image"] as? String {
+            couponImageView.image = UIImage(named: urlString) //オプショナルバインディングで値を取り出す
+        } else {
+            couponImageView.image = UIImage(named: "no-coupon-image.png") //nilの場合は固定画像表示
+        }
         return cell
     }
     

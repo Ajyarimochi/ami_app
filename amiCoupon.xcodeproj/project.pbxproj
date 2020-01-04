@@ -13,6 +13,7 @@
 		842660412360072B00B7F02A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8426603F2360072B00B7F02A /* Main.storyboard */; };
 		842660432360072C00B7F02A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842660422360072C00B7F02A /* Assets.xcassets */; };
 		842660462360072C00B7F02A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842660442360072C00B7F02A /* LaunchScreen.storyboard */; };
+		84FBB06523C069B500EECC7D /* no-coupon-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FBB06423C069B500EECC7D /* no-coupon-image.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		842660422360072C00B7F02A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		842660452360072C00B7F02A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		842660472360072C00B7F02A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84FBB06423C069B500EECC7D /* no-coupon-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no-coupon-image.png"; path = "../../../Desktop/no-coupon-image.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				842660422360072C00B7F02A /* Assets.xcassets */,
 				842660442360072C00B7F02A /* LaunchScreen.storyboard */,
 				842660472360072C00B7F02A /* Info.plist */,
+				84FBB06423C069B500EECC7D /* no-coupon-image.png */,
 			);
 			path = amiCoupon;
 			sourceTree = "<group>";
@@ -125,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84FBB06523C069B500EECC7D /* no-coupon-image.png in Resources */,
 				842660462360072C00B7F02A /* LaunchScreen.storyboard in Resources */,
 				842660432360072C00B7F02A /* Assets.xcassets in Resources */,
 				842660412360072B00B7F02A /* Main.storyboard in Resources */,
