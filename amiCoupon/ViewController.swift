@@ -68,7 +68,16 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         // クーポン画像を表示
         let couponImageView = cell.viewWithTag(5) as! UIImageView
         if let urlString = coupon["image"] as? String {
-            couponImageView.image = UIImage(named: urlString) //オプショナルバインディングで値を取り出す
+            let url = URL(string: urlString)
+            print(urlString)
+            do{
+                let imageData = try Data(contentsOf: url!)
+                couponImageView.image = UIImage(data: imageData)
+            } catch {
+                print("Error : Cat't get image")
+            }
+                
+                
         } else {
             couponImageView.image = UIImage(named: "no-coupon-image.png") //nilの場合は固定画像表示
         }
